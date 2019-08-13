@@ -24,3 +24,6 @@ yum -y install ca-certificates
 
 
  ./tcp.sh
+ 
+ 
+ 安卓APK点击这里<a href="https://github.com/sixpence111/Shadowsocks/raw/master/shadowsocks-nightly-4.1.8.apk">下载</a>
