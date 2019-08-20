@@ -5,7 +5,6 @@
 yum -y install wget
 
 
-wget –no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-all.sh
 
 wget –no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-all.sh
 
