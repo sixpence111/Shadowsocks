@@ -23,7 +23,7 @@
 # @linusyang  <https://github.com/linusyang>
 # @Akkariiin  <https://github.com/Akkariiin>
 # 
-# Intro:  https://www.yigeni.com/
+# Intro:  https://www.sixpence111.com/
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
@@ -39,38 +39,38 @@ cur_dir=$( pwd )
 software=(Shadowsocks-Python ShadowsocksR Shadowsocks-Go Shadowsocks-libev)
 
 libsodium_file="libsodium-1.0.16"
-libsodium_url="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/libsodium-1.0.16.tar.gz"
+libsodium_url="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/libsodium-1.0.16.tar.gz"
 
 mbedtls_file="mbedtls-2.6.0"
-mbedtls_url="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/mbedtls-2.6.0-gpl.tgz"
+mbedtls_url="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/mbedtls-2.6.0-gpl.tgz"
 
 shadowsocks_python_file="shadowsocks-master"
-shadowsocks_python_url="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-master.zip"
+shadowsocks_python_url="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-master.zip"
 shadowsocks_python_init="/etc/init.d/shadowsocks-python"
 shadowsocks_python_config="/etc/shadowsocks-python/config.json"
-shadowsocks_python_centos="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks"
-shadowsocks_python_debian="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-debian"
+shadowsocks_python_centos="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks"
+shadowsocks_python_debian="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-debian"
 
 shadowsocks_r_file="shadowsocksr-3.2.1"
-shadowsocks_r_url="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocksr-3.2.1.tar.gz"
+shadowsocks_r_url="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocksr-3.2.1.tar.gz"
 shadowsocks_r_init="/etc/init.d/shadowsocks-r"
 shadowsocks_r_config="/etc/shadowsocks-r/config.json"
-shadowsocks_r_centos="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocksR"
-shadowsocks_r_debian="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocksR-debian"
+shadowsocks_r_centos="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocksR"
+shadowsocks_r_debian="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocksR-debian"
 
 shadowsocks_go_file_64="shadowsocks-server-linux64-1.2.1"
-shadowsocks_go_url_64="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-server-linux64-1.2.1.gz"
+shadowsocks_go_url_64="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-server-linux64-1.2.1.gz"
 shadowsocks_go_file_32="shadowsocks-server-linux32-1.2.1"
-shadowsocks_go_url_32="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-server-linux32-1.2.1.gz"
+shadowsocks_go_url_32="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-server-linux32-1.2.1.gz"
 shadowsocks_go_init="/etc/init.d/shadowsocks-go"
 shadowsocks_go_config="/etc/shadowsocks-go/config.json"
-shadowsocks_go_centos="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-go"
-shadowsocks_go_debian="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-go-debian"
+shadowsocks_go_centos="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-go"
+shadowsocks_go_debian="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-go-debian"
 
 shadowsocks_libev_init="/etc/init.d/shadowsocks-libev"
 shadowsocks_libev_config="/etc/shadowsocks-libev/config.json"
-shadowsocks_libev_centos="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-libev"
-shadowsocks_libev_debian="https://raw.githubusercontent.com/yigeni/Shadowsocks/master/shadowsocks-libev-debian"
+shadowsocks_libev_centos="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-libev"
+shadowsocks_libev_debian="https://raw.githubusercontent.com/sixpence111/Shadowsocks/master/shadowsocks-libev-debian"
 
 # Stream Ciphers
 common_ciphers=(
@@ -388,7 +388,7 @@ error_detect_depends(){
     ${command}
     if [ $? != 0 ]; then
         echo -e "[${red}Error${plain}] Failed to install ${red}${depend}${plain}"
-        echo "Please visit: https://www.yigeni.com/ and contact."
+        echo "Please visit: https://www.sixpence111.com/ and contact."
         exit 1
     fi
 }
@@ -882,7 +882,7 @@ install_shadowsocks_python() {
     else
         echo
         echo -e "[${red}Error${plain}] ${software[0]} install failed."
-        echo "Please visit: https://www.yigeni.com/ and contact."
+        echo "Please visit: https://www.sixpence111.com/ and contact."
         install_cleanup
         exit 1
     fi
@@ -904,7 +904,7 @@ install_shadowsocks_r() {
     else
         echo
         echo -e "[${red}Error${plain}] ${software[1]} install failed."
-        echo "Please visit; https://www.yigeni.com/ and contact."
+        echo "Please visit; https://www.sixpence111.com/ and contact."
         install_cleanup
         exit 1
     fi
@@ -944,7 +944,7 @@ install_shadowsocks_go() {
     else
         echo
         echo -e "[${red}Error${plain}] ${software[2]} install failed."
-        echo "Please visit: https://www.yigeni.com/ and contact."
+        echo "Please visit: https://www.sixpence111.com/ and contact."
         install_cleanup
         exit 1
     fi
@@ -967,7 +967,7 @@ install_shadowsocks_libev() {
     else
         echo
         echo -e "[${red}Error${plain}] ${software[3]} install failed."
-        echo "Please visit: https://www.yigeni.com/ and contact."
+        echo "Please visit: https://www.sixpence111.com/ and contact."
         install_cleanup
         exit 1
     fi
@@ -985,7 +985,7 @@ install_shadowsocks_libev_obfs() {
         make install
         if [ ! "$(command -v obfs-server)" ]; then
             echo -e "[${red}Error${plain}] simple-obfs for ${software[${selected}-1]} install failed."
-            echo "Please visit: https://www.yigeni.com/ and contact."
+            echo "Please visit: https://www.sixpence111.com/ and contact."
             install_cleanup
             exit 1
         fi
@@ -1124,7 +1124,7 @@ install_main(){
     fi
 
     echo
-    echo "Welcome to visit: https://www.yigeni.com/"
+    echo "Welcome to visit: https://www.sixpence111.com/"
     echo "Enjoy it!"
     echo
 }
