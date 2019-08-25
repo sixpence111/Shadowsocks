@@ -29,4 +29,4 @@ yum -y install ca-certificates
  
  ## 安卓APK点击这里<a href="https://github.com/sixpence111/Shadowsocks/raw/master/shadowsocks-nightly-4.1.8.apk">下载</a>
  
-##  电脑exe点击这里<a href="https://github.com/sixpence111/Shadowsocks/raw/master/%E7%94%B5%E8%84%91%E7%AB%AFShadowsocksR.rar">下载</a>
+##  电脑exe点击这里<a href="https://github.com/sixpence111/Shadowsocks/raw/master/ShadowsocksR-4.7.0.rar">下载</a>
