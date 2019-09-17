@@ -57,6 +57,10 @@ sed -i "s/ssl = required/ssl = no/g" /etc/dovecot/conf.d/10-ssl.conf
 systemctl restart dovecot
 systemctl enable dovecot
 
+sed -i "s/cleanup   unix  n       -       n       -       0       cleanup/cleanup   unix  n       -       n       -       0       cleanup -o header_checks=pcre:\/etc\/postfix\/header_checks/g" /etc/postfix/master.cf
+echo '/^Received:/IGNORE' >> /etc/postfix/header_checks
+service postfix restart
+
 useradd $2
 echo $3|passwd $2 --stdin
 
