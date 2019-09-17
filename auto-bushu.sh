@@ -1,4 +1,3 @@
-#!/bin/bash
 firewall-cmd --permanent --add-port=25/tcp
 firewall-cmd --permanent --add-port=110/tcp
 firewall-cmd --reload
