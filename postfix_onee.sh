@@ -204,7 +204,7 @@ echo "_dmarc.$(echo $2|cut -d"." -f 1)  TXT     默认    \"v=DMARC1; p=none\"  
 echo "$(cat /etc/mail/dkim-milter/keys/default.txt|awk -F" IN" '{print$1}').$(echo $2|cut -d"." -f 1)        TXT     默认     \"$(cat /etc/mail/dkim-milter/keys/default.txt|awk -F"\"" '{print$2}')\"   0       600" >>/opt/$1_$2.dns.info.txt
 echo "/usr/bin/dk-filter  -l -d $2  -p inet:8891@localhost -S default -s /etc/mail/dkim-milter/keys/default.private -A " >>  /root/sdkim
 echo "/usr/bin/dk-filter  -l -d $2  -p inet:8891@localhost -S default -s /etc/mail/dkim-milter/keys/default.private -A " >> /etc/rc.local
-DOMAINIDD=$(curl -m 20  -d "login_email=用户名&login_password=密码&format=json&lang=en&type=all" https://dnsapi.cn/Domain.List |grep -E -o "\{[^{}]*\}"  |grep -E -o "[^\,]*"|grep -B 13 $2|grep -w   id|grep -E -o ":[^\,]*"|grep -E -o "([1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])")
+#DOMAINIDD=$(curl -m 20  -d "login_email=用户名&login_password=密码&format=json&lang=en&type=all" https://dnsapi.cn/Domain.List |grep -E -o "\{[^{}]*\}"  |grep -E -o "[^\,]*"|grep -B 13 $2|grep -w   id|grep -E -o ":[^\,]*"|grep -E -o "([1-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])")
 #curl -m 20 -X POST https://dnsapi.cn/Record.Create -d 'login_email=用户名&login_password=密码&format=json&domain_id='$DOMAINIDD'&sub_domain=@&record_type=A&record_line=默认&value='$1''
 #curl -m 20 -X POST https://dnsapi.cn/Record.Create -d 'login_email=用户名&login_password=密码&format=json&domain_id='$DOMAINIDD'&sub_domain=@&record_type=MX&record_line=默认&value='$2'&mx=10'
 #curl -m 20 -X POST https://dnsapi.cn/Record.Create -d 'login_email=用户名&login_password=密码&format=json&domain_id='$DOMAINIDD'&sub_domain=_dmarc&record_type=TXT&record_line=默认&value='"v=DMARC1; p=none"''
