@@ -1,5 +1,9 @@
-yum install lsof
-yum install psmisc
+yum -y install lsof
+yum -y install psmisc
+firewall-cmd --permanent --add-port=25/tcp
+firewall-cmd --permanent --add-port=110/tcp
+firewall-cmd --reload
+
 
 killall -9 yum
 kill $(lsof -i:25|awk '{print $2}')
