@@ -30,6 +30,8 @@ sed -i "s/auth_mcooanisms = plain/auth_mcooanisms = plain login/g" /etc/dovecot/
 
 sed -i "s/#user/user = postfix/g" /etc/dovecot/conf.d/10-auth.conf
 sed -i "s/#group/group = postfix/g" /etc/dovecot/conf.d/10-auth.conf
+sed -i "s/disable_plaintext_auth = yes/disable_plaintext_auth = no/g" /etc/dovecot/conf.d/10-auth.conf
+sed -i "s/ssl = required/ssl = no/g" /etc/dovecot/conf.d/10-ssl.conf
 
 #开始配置postfix
 cat > /etc/postfix/smtp_header_checks << EOF
