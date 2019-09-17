@@ -48,12 +48,7 @@ sed -i "s/#mail_location =/mail_location = maildir:~\/Maildir/g" /etc/dovecot/co
 
 
 
-sed -i "s/#unix_listener \/var\/spool\/postfix\/private\/auth {/unix_listener \/var\/spool\/postfix\/private\/auth {/g" /etc/dovecot/conf.d/10-master.conf
-sed -i "s/#  mode = 0666/mode = 0666/g" /etc/dovecot/conf.d/10-master.conf
-sed -i "s/#}/user = postfix \n group = postfix \n }/g" /etc/dovecot/conf.d/10-master.conf
-
-
-
+sed -i "s/#unix_listener \/var\/spool\/postfix\/private\/auth {/unix_listener \/var\/spool\/postfix\/private\/auth { \n mode = 0666 \n user = postfix \n group = postfix \n }/g" /etc/dovecot/conf.d/10-master.conf
 
 
 sed -i "s/ssl = required/ssl = no/g" /etc/dovecot/conf.d/10-ssl.conf 
@@ -66,7 +61,7 @@ useradd $2
 echo $3|passwd $2 --stdin
 
 
-echo "\nOKOKOKOKOK"
+echo "\n OKOKOKOKOK"
 
 
 
