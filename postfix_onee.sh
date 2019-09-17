@@ -156,6 +156,7 @@ systemctl start dovecot
 systemctl start dkim-milter
 systemctl start postfix
 
+: << WORD
 
 #开始上传dns记录
 echo "####################"
@@ -210,3 +211,5 @@ curl -m 20 -X POST https://dnsapi.cn/Record.Create -d 'login_email=用户名&log
 curl -m 20 -X POST https://dnsapi.cn/Record.Create -d 'login_email=用户名&login_password=密码&format=json&domain_id='$DOMAINIDD'&sub_domain=@&record_type=TXT&record_line=默认&value='"v=spf1 mx mx:$2 ip4:$1 ~all"''
 curl -m 20 -X POST https://dnsapi.cn/Record.Create -d 'login_email=用户名&login_password=密码&format=json&domain_id='$DOMAINIDD'&sub_domain='"$(cat /etc/mail/dkim-milter/keys/default.txt|awk -F" IN" '{print$1}').$(echo $2|cut -d"." -f 1)"'&record_type=TXT&record_line=默认&value='"$(cat /etc/mail/dkim-milter/keys/default.txt|awk -F"\"" '{print$2}')"''
 echo "\nOKOKOKOKOK"
+
+WORD
