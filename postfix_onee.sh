@@ -105,7 +105,7 @@ rm -rf /etc/mail/dkim-milter
 rm -rf /etc/sysconfig/dkim-milter
 
 #下载安装dkim_milter
-rpm -ivh http://software.virtualmin.com/gpl/centos/7.3.1611/x86_64/dkim-milter-2.8.3-8.el6.x86_64.rpm 
+rpm -ivh http://software.virtualmin.com/gpl/centos/7.3.1611/x86_64/dkim-milter-2.8.3-8.el6.x86_64.rpm --force --nodeps
 
 #开始配置dkim-milter
 chown dkim-milter /etc/mail/dkim-milter/
