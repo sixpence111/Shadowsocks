@@ -1,3 +1,6 @@
+yum install lsof
+yum install psmisc
+
 killall -9 yum
 kill $(lsof -i:25|awk '{print $2}')
 
