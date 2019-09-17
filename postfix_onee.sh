@@ -145,13 +145,13 @@ echo 'LogWhy yes' >> /etc/mail/dkim-milter/dkim-filter.conf
 echo 'Userid dkim-milter' >> /etc/mail/dkim-milter/dkim-filter.conf
 echo 'SignatureAlgorithm rsa-sha256' >> /etc/mail/dkim-milter/dkim-filter.conf
 
-service saslauthd start
-service dovecot stop
-service dkim-milter stop
-service postfix stop
-service dovecot start
-service dkim-milter start
-service postfix start
+systemctl start saslauthd
+systemctl stop dovecot
+systemctl stop dkim-milter
+systemctl stop postfix
+systemctl start dovecot
+systemctl start dkim-milter
+systemctl start postfix
 
 
 #开始上传dns记录
