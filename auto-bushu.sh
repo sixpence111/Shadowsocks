@@ -1,4 +1,4 @@
-
+#!/bin/bash
 #开端口
 firewall-cmd --permanent --add-port=25/tcp
 firewall-cmd --permanent --add-port=110/tcp
