@@ -66,6 +66,9 @@ useradd $2
 echo $3|passwd $2 --stdin
 
 
+echo "\nOKOKOKOKOK"
+
+
 
 
 
