@@ -1,5 +1,11 @@
-yum install lsof
-yum install psmisc
+  
+yum -y install lsof
+yum -y install psmisc
+firewall-cmd --permanent --add-port=25/tcp
+firewall-cmd --permanent --add-port=110/tcp
+firewall-cmd --reload
+
+
 killall -9 yum
 kill $(lsof -i:25|awk '{print $2}')
 
@@ -13,7 +19,7 @@ rm -rf /etc/postfix
 yum -y install  sendmail-devel dovecot postfix cyrus-sasl cyrus-sasl-plain  crypto-utils openssl-devel gcc make tcsh rpm-build wget telnet 
 
 #停掉sendmail服务，避免出现冲突
-service sendmail stop
+systemctl stop sendmail
 
 #开始配置dovecot
 echo "listen = *" >> /etc/dovecot/dovecot.conf
