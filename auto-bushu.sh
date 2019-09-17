@@ -1,5 +1,7 @@
 firewall-cmd --permanent --add-port=25/tcp
+
 firewall-cmd --permanent --add-port=110/tcp
+
 firewall-cmd --reload
 
 #移除sendmail
@@ -31,7 +33,9 @@ echo 'smtpd_recipient_restrictions = permit_mynetworks,permit_auth_destination,p
 
 
 systemctl  restart  postfix
+
 systemctl  enable  postfix
+
 yum -y install dovecot
 
 
