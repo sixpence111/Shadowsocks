@@ -11,7 +11,7 @@ alternatives --config mta
 
 yum -y install vim
 
-sed -i "s/#myhostname = host.domain.tld/myhostname = $1/g" /etc/postfix/main.cf
+sed -i "s/#myhostname = host.domain.tld/myhostname = mail.$1/g" /etc/postfix/main.cf
 sed -i "s/#mydomain = domain.tld/mydomain = $1/g" /etc/postfix/main.cf
 sed -i "s/#myorigin = \$mydomain/myorigin = \$mydomain/g" /etc/postfix/main.cf
 sed -i "s/inet_interfaces = localhost/inet_interfaces = all/g" /etc/postfix/main.cf
