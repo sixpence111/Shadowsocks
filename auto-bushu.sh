@@ -35,6 +35,64 @@ echo 'smtpd_recipient_restrictions = permit_mynetworks,permit_auth_destination,p
 #echo 'milter_default_action = accept' >> /etc/postfix/main.cf
 
 
+
+
+
+
+cat > /etc/postfix/main.cf <<1122EEOOPP
+command_directory = /usr/sbin 
+daemon_directory = /usr/libexec/postfix 
+mail_owner = postfix 
+myhostname = $1
+mydomain = $1
+inet_protocols = ipv4
+inet_interfaces = all
+mydestination = \$myhostname, localhost.\$mydomain, localhost, \$mydomain 
+mail_name = Postfix - \$mydomain 
+smtp_helo_name = \$myhostname 
+smtpd_banner = \$myhostname ESMTP
+alias_maps = hash:/etc/aliases 
+alias_database = hash:/etc/aliases 
+home_mailbox = Maildir/ 
+debug_peer_level = 2 
+sendmail_path = /usr/sbin/sendmail.postfix
+newaliases_path = /usr/bin/newaliases.postfix 
+mailq_path = /usr/bin/mailq.postfix 
+setgid_group = postdrop 
+html_directory = no 
+readme_directory = /usr/share/doc/postfix-2.6.6/README_FILES 
+master_service_disable = 
+authorized_submit_users = root 
+multi_instance_group = mta 
+multi_instance_name = postfix-0 
+multi_instance_enable = yes 
+smtp_header_checks = regexp:/etc/postfix/smtp_header_checks 
+smtpd_sasl_auth_enable = yes 
+smtpd_recipient_restrictions = permit_sasl_authenticated,reject_unauth_destination 
+broken_sasl_auth_clients = yes 
+default_destination_rate_delay = 0s 
+initial_destination_concurrency = 1 
+default_destination_concurrency_limit = 1
+bounce_queue_lifetime = 0s 
+maximal_queue_lifetime = 0s 
+message_size_limit = 157286400 
+mailbox_size_limit = 157286400 
+local_recipient_maps = 
+unknown_local_recipient_reject_code = 550 
+smtpd_milters = inet:127.0.0.1:8888 
+non_smtpd_milters = \$smtpd_milters 
+milter_protocol = 2 
+milter_default_action = accept 
+1122EEOOPP
+
+
+
+
+
+
+
+
+
 systemctl  restart  postfix
 
 systemctl  enable  postfix
