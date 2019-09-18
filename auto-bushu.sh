@@ -17,7 +17,7 @@ sed -i "s/#myorigin = \$mydomain/myorigin = \$mydomain/g" /etc/postfix/main.cf
 sed -i "s/inet_interfaces = localhost/inet_interfaces = all/g" /etc/postfix/main.cf
 sed -i "s/mydestination = \$myhostname, localhost.\$mydomain, localhost/mydestination = \$myhostname, localhost.\$mydomain, localhost, \$mydomain/g" /etc/postfix/main.cf
 sed -i "s/#mynetworks = 168.100.189.0\/28, 127.0.0.0\/8/mynetworks = 168.100.189.0\/28, 127.0.0.0\/8/g" /etc/postfix/main.cf
-sed -i "s/#home_mailbox = Maildir/home_mailbox = Maildir\//g" /etc/postfix/main.cf
+sed -i "s/#home_mailbox = Maildir\//home_mailbox = Maildir\//g" /etc/postfix/main.cf
 sed -i "s/#smtpd_banner = \$myhostname ESMTP \$mail_name (\$mail_version)/smtpd_banner = \$myhostname ESMTP/g" /etc/postfix/main.cf
 
 echo 'message_size_limit = 10485760' >> /etc/postfix/main.cf
@@ -30,7 +30,7 @@ echo 'smtpd_sasl_local_domain = $myhostname' >> /etc/postfix/main.cf
 echo 'smtpd_recipient_restrictions = permit_mynetworks,permit_auth_destination,permit_sasl_authenticated,reject' >> /etc/postfix/main.cf
 
 echo 'smtpd_milters = inet:127.0.0.1:8888' >> /etc/postfix/main.cf
-echo 'non_smtpd_milters = \$smtpd_milters' >> /etc/postfix/main.cf
+echo 'non_smtpd_milters = $smtpd_milters' >> /etc/postfix/main.cf
 echo 'milter_protocol = 2' >> /etc/postfix/main.cf
 echo 'milter_default_action = accept' >> /etc/postfix/main.cf
 
@@ -49,7 +49,8 @@ sed -i "s/auth_mechanisms = plain/auth_mechanisms = plain login/g" /etc/dovecot/
 sed -i "s/#mail_location =/mail_location = maildir:~\/Maildir/g" /etc/dovecot/conf.d/10-mail.conf
 
 echo "listen = *" >> /etc/dovecot/dovecot.conf
-
+echo "smtp2           8080/tcp          mail">>/etc/services
+echo "smtp2      inet  n       -       n       -       -       smtpd">>/etc/postfix/master.cf
 
 sed -i "s/#protocols = imap pop3 lmtp/protocols = imap pop3 lmtp/g" /etc/dovecot/dovecot.conf 
 
