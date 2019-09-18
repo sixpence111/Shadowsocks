@@ -8,7 +8,7 @@ firewall-cmd --reload
 yum remove sendmail
 
 
-
+yum -y install telnet
 yum -y install vim
 
 sed -i "s/#myhostname = host.domain.tld/myhostname = mail.$1/g" /etc/postfix/main.cf
@@ -50,10 +50,10 @@ sed -i "s/auth_mechanisms = plain/auth_mechanisms = plain login/g" /etc/dovecot/
 sed -i "s/#mail_location =/mail_location = maildir:~\/Maildir/g" /etc/dovecot/conf.d/10-mail.conf
 
 echo "listen = *" >> /etc/dovecot/dovecot.conf
-echo "smtp2           8080/tcp          mail">>/etc/services
-echo "smtp2      inet  n       -       n       -       -       smtpd">>/etc/postfix/master.cf
+#echo "smtp2           8080/tcp          mail">>/etc/services
+#echo "smtp2      inet  n       -       n       -       -       smtpd">>/etc/postfix/master.cf
 
-sed -i "s/#protocols = imap pop3 lmtp/protocols = imap pop3 lmtp/g" /etc/dovecot/dovecot.conf 
+#sed -i "s/#protocols = imap pop3 lmtp/protocols = imap pop3 lmtp/g" /etc/dovecot/dovecot.conf 
 
 
 sed -i "s/#unix_listener \/var\/spool\/postfix\/private\/auth {/unix_listener \/var\/spool\/postfix\/private\/auth { \n mode = 0666 \n user = postfix \n group = postfix \n }/g" /etc/dovecot/conf.d/10-master.conf
