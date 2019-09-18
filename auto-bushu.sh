@@ -19,6 +19,9 @@ sed -i "s/mydestination = \$myhostname, localhost.\$mydomain, localhost/mydestin
 sed -i "s/#mynetworks = 168.100.189.0\/28, 127.0.0.0\/8/mynetworks = 168.100.189.0\/28, 127.0.0.0\/8/g" /etc/postfix/main.cf
 sed -i "s/#home_mailbox = Maildir\//home_mailbox = Maildir\//g" /etc/postfix/main.cf
 sed -i "s/#smtpd_banner = \$myhostname ESMTP \$mail_name (\$mail_version)/smtpd_banner = \$myhostname ESMTP/g" /etc/postfix/main.cf
+sed -i "s/inet_protocols = all/inet_protocols = ipv4/g" /etc/postfix/main.cf
+
+
 
 echo 'message_size_limit = 10485760' >> /etc/postfix/main.cf
 echo 'mailbox_size_limit = 1073741824' >> /etc/postfix/main.cf
