@@ -7,7 +7,7 @@ firewall-cmd --reload
 #移除sendmail
 yum remove sendmail
 
-alternatives --config mta
+
 
 yum -y install vim
 
@@ -76,6 +76,9 @@ EOF
 
 useradd $2
 echo $3|passwd $2 --stdin
+
+
+alternatives --config mta
 
 
 echo "\n OKOKOKOKOK"
