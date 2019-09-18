@@ -29,10 +29,10 @@ echo 'smtpd_sasl_security_options = noanonymous' >> /etc/postfix/main.cf
 echo 'smtpd_sasl_local_domain = $myhostname' >> /etc/postfix/main.cf
 echo 'smtpd_recipient_restrictions = permit_mynetworks,permit_auth_destination,permit_sasl_authenticated,reject' >> /etc/postfix/main.cf
 
-echo 'smtpd_milters = inet:127.0.0.1:8888' >> /etc/postfix/main.cf
-echo 'non_smtpd_milters = $smtpd_milters' >> /etc/postfix/main.cf
-echo 'milter_protocol = 2' >> /etc/postfix/main.cf
-echo 'milter_default_action = accept' >> /etc/postfix/main.cf
+#echo 'smtpd_milters = inet:127.0.0.1:8888' >> /etc/postfix/main.cf
+#echo 'non_smtpd_milters = $smtpd_milters' >> /etc/postfix/main.cf
+#echo 'milter_protocol = 2' >> /etc/postfix/main.cf
+#echo 'milter_default_action = accept' >> /etc/postfix/main.cf
 
 
 systemctl  restart  postfix
