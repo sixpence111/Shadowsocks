@@ -45,7 +45,10 @@ sed -i "s/#disable_plaintext_auth = yes/disable_plaintext_auth = no/g" /etc/dove
 sed -i "s/auth_mechanisms = plain/auth_mechanisms = plain login/g" /etc/dovecot/conf.d/10-auth.conf
 sed -i "s/#mail_location =/mail_location = maildir:~\/Maildir/g" /etc/dovecot/conf.d/10-mail.conf
 
+echo "listen = *" >> /etc/dovecot/dovecot.conf
 
+
+sed -i "s/#protocols = imap pop3 lmtp/protocols = imap pop3 lmtp/g" /etc/dovecot/dovecot.conf 
 
 
 sed -i "s/#unix_listener \/var\/spool\/postfix\/private\/auth {/unix_listener \/var\/spool\/postfix\/private\/auth { \n mode = 0666 \n user = postfix \n group = postfix \n }/g" /etc/dovecot/conf.d/10-master.conf
@@ -57,9 +60,15 @@ sed -i "s/ssl = required/ssl = no/g" /etc/dovecot/conf.d/10-ssl.conf
 systemctl restart dovecot
 systemctl enable dovecot
 
-sed -i "s/cleanup   unix  n       -       n       -       0       cleanup/cleanup   unix  n       -       n       -       0       cleanup -o header_checks=pcre:\/etc\/postfix\/header_checks/g" /etc/postfix/master.cf
-echo '/^Received:/IGNORE' >> /etc/postfix/header_checks
-service postfix restart
+cat > /etc/postfix/smtp_header_checks << EOF
+/^Received: .*/     IGNORE
+/^X-Originating-IP:/    IGNORE
+/^Received:from/ IGNORE 
+/^X-Mailer:/ IGNORE
+/^Received:.*\[(192\.168|172\.(1[6-9]|2[0-9]|3[01])|10)\./ IGNORE
+/^Received:.*\[(192\.168|172\.(1[6-9]|2[0-9]|3[01])|10)\./ IGNORE
+/^Received:.*\[127\.0\.0\.1/ IGNORE
+EOF
 
 useradd $2
 echo $3|passwd $2 --stdin
