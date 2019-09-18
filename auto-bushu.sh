@@ -53,7 +53,7 @@ echo "listen = *" >> /etc/dovecot/dovecot.conf
 #echo "smtp2           8080/tcp          mail">>/etc/services
 #echo "smtp2      inet  n       -       n       -       -       smtpd">>/etc/postfix/master.cf
 
-#sed -i "s/#protocols = imap pop3 lmtp/protocols = imap pop3 lmtp/g" /etc/dovecot/dovecot.conf 
+sed -i "s/#protocols = imap pop3 lmtp/protocols = imap pop3 lmtp/g" /etc/dovecot/dovecot.conf 
 
 
 sed -i "s/#unix_listener \/var\/spool\/postfix\/private\/auth {/unix_listener \/var\/spool\/postfix\/private\/auth { \n mode = 0666 \n user = postfix \n group = postfix \n }/g" /etc/dovecot/conf.d/10-master.conf
