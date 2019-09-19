@@ -84,6 +84,8 @@ echo $3|passwd $2 --stdin
 
 alternatives --config mta
 
+systemctl  restart  postfix
+systemctl restart dovecot
 
 echo "\n OKOKOKOKOK"
 
