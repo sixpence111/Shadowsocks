@@ -11,6 +11,9 @@ yum remove sendmail
 yum -y install telnet
 yum -y install vim
 
+
+hostname mail.$1
+
 sed -i "s/#myhostname = host.domain.tld/myhostname = mail.$1/g" /etc/postfix/main.cf
 sed -i "s/#mydomain = domain.tld/mydomain = $1/g" /etc/postfix/main.cf
 sed -i "s/#myorigin = \$mydomain/myorigin = \$mydomain/g" /etc/postfix/main.cf
